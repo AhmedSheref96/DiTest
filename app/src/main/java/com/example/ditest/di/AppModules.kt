@@ -9,8 +9,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
 import timber.log.Timber
-import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -33,7 +33,6 @@ object appModules {
     fun getDataBase(@ApplicationContext context: Context): DataBase {
         Timber.d("---------------- dataBase Created By DI")
         return Room.databaseBuilder(context, DataBase::class.java, "dataBase")
-            .addMigrations()
             .build()
     }
 
@@ -41,6 +40,14 @@ object appModules {
     @Singleton
     fun getUserDao(dataBase: DataBase): UserDao {
         return dataBase.dao()
+    }
+
+    @Provides
+    @Singleton
+    fun getRetrofitInstance(): Retrofit {
+        Retrofit.Builder()
+            .baseUrl("")
+            .build()
     }
 
 }
