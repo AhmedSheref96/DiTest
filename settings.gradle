@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DiTest"
 include ':app'
+include ':Models'
+include ':Network'

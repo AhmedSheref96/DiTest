@@ -1,4 +1,4 @@
-package com.example.ditest.ui.products
+package com.example.ditest.ui.home.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,18 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ditest.R
 
-class ProductsFragment : Fragment() {
-    private val viewModel: ProductsViewModel by viewModels()
+class CartFragment : Fragment() {
+
+    private val viewModel: CartViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.products_fragment, container, false)
+        return inflater.inflate(R.layout.cart_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
 }

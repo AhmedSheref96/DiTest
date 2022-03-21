@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/products_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/activity_detailst.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/activity_main.xml" value="0.2675925925925926" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/cart_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/nav_view_header.xml" value="0.2601851851851852" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/product_item.xml" value="0.2564814814814815" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/layout/products_fragment.xml" value="0.2564814814814815" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/DiTest/app/src/main/res/menu/btm_nav_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
