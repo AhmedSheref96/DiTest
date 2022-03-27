@@ -30,7 +30,6 @@ class ProductsRepository @Inject constructor(private val client: ProductsClient)
         }
     }
 
-
     suspend fun getProducts(
         onLoading: (Boolean) -> Unit,
         onError: (String) -> Unit,

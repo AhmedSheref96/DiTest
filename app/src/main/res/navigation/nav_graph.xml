@@ -2,9 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/home_nav">
 
+    <action
+        android:id="@+id/openHome"
+        app:destination="@id/home_nav" />
+    <action
+        android:id="@+id/openCart"
+        app:destination="@id/cart_nav" />
     <fragment
         android:id="@+id/home_nav"
         android:name="com.example.ditest.ui.home.products.ProductsFragment"

@@ -1,6 +1,5 @@
 package com.example.network.products
 
-import android.util.Log
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

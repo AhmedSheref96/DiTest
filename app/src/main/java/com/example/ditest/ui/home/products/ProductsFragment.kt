@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProductsFragment : FragmentBinding() {
-
     private val viewModel: ProductsViewModel by viewModels()
 
     override fun onCreateView(
@@ -24,6 +23,7 @@ class ProductsFragment : FragmentBinding() {
                 viewModel = this@ProductsFragment.viewModel
                 lifecycleOwner = this@ProductsFragment
                 executePendingBindings()
+
             }.root
     }
 

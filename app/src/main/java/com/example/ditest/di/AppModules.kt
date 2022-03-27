@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import com.example.ditest.database.DataBase
 import com.example.ditest.database.daos.UserDao
+import com.example.network.EndPoint
 import com.example.network.products.ProductsService
+import com.ihsanbal.logging.Level
+import com.ihsanbal.logging.LoggingInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -14,12 +17,14 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.internal.platform.Platform
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
-
 
 //SingletonComponent
 //ViewModelComponent
@@ -56,11 +61,30 @@ object activityModule {
 
     @Provides
     @Singleton
-    fun getRetrofitInstance(moshi: Moshi): Retrofit {
+    fun getRetrofitInstance(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         Timber.d("-------------- Retrofit Instance Created")
         return Retrofit.Builder()
-            .baseUrl("https://fakestoreapi.com/")
+            .client(okHttpClient)
+            .baseUrl(EndPoint.baseUrl)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun getOkhttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(
+                LoggingInterceptor.Builder()
+                    .setLevel(Level.BASIC)
+                    .log(Platform.INFO)
+                    .request(" requeeeeeeeest   ")
+                    .response(" responsssse   ")
+                    .build()
+            )
+            .readTimeout(EndPoint.connectionTimeOut, TimeUnit.MILLISECONDS)
+            .writeTimeout(EndPoint.connectionTimeOut, TimeUnit.MILLISECONDS)
+            .connectTimeout(EndPoint.connectionTimeOut, TimeUnit.MILLISECONDS)
             .build()
     }
 
@@ -71,16 +95,6 @@ object activityModule {
             .add(KotlinJsonAdapterFactory())
             .build()
     }
-
-    /*
-    @Provides
-    @ActivityScoped
-    fun getProductsClient(service: ProductsService): ProductsClient =
-        ProductsClient(service)
-
-    */
-
-
 }
 
 @Module
@@ -92,9 +106,6 @@ object repositoriesModule {
     fun getProductService(retrofit: Retrofit): ProductsService =
         retrofit.create(ProductsService::class.java)
 
-//    @Provides
-//    @ViewScoped
-//    fun getProductsRepository(client: ProductsClient) = ProductsRepository()
 
 }
 

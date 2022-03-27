@@ -5,6 +5,7 @@
 
     <data>
 
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.example.ditest.ui.home.products.ProductsViewModel" />
@@ -15,14 +16,24 @@
         android:layout_height="match_parent"
         tools:context=".ui.home.products.ProductsFragment">
 
-
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adapter="@{viewModel.adapter}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="2"
             tools:listitem="@layout/product_item" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+            android:visibility="@{viewModel.isLoading()?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

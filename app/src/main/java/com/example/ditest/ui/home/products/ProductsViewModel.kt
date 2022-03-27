@@ -12,7 +12,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductsViewModel @Inject constructor(private val repository: ProductsRepository) :
     BaseViewModel(), RecyclerAdapterBinding.ItemClickListener {
-
     val adapter = ProductsAdapter(this)
 
     fun getProductsCategories() {
@@ -32,6 +31,8 @@ class ProductsViewModel @Inject constructor(private val repository: ProductsRepo
             })
         }
     }
+
+
 
     fun getProducts() {
         viewModelScope.launch {
