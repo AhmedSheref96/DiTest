@@ -14,8 +14,7 @@ fun bindImg(v: ImageView, url: String) {
             .centerInside()
             .placeholder(R.color.white)
             .into(v)
-    } catch (e: Exception) {
-    }
+    } catch (e: Exception) {}
 }
 
 @BindingAdapter("bindImgH", "placeHolder")

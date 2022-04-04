@@ -1,5 +1,7 @@
 package com.example.ditest.ui.home.products
 
+import com.example.ditest.utils.Response
+import com.example.ditest.utils.safeCall
 import com.example.models.products.ResponseItem
 import com.example.network.products.ProductsClient
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -49,6 +51,13 @@ class ProductsRepository @Inject constructor(private val client: ProductsClient)
             onError(e.message.toString())
         } finally {
             onLoading(false)
+        }
+    }
+
+    suspend fun getProducts(): Response<Array<ResponseItem>> {
+        return safeCall {
+            val response = client.getAllProducts()
+            Response.Success(response)
         }
     }
 
